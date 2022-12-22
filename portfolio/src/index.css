@@ -38,6 +38,7 @@ code {
 
 .menu > ul > i > a {
   text-decoration: none;
+  color: white;
 }
 
 .menu > ul > i > a:visited{
@@ -138,5 +139,37 @@ code {
 }
 
 .main-body {
-  width: 45%;
+  width: 55%;
+  font-family: Apple Chancery, cursive;
 }
+
+.main-body > h1{
+  color: white;
+  font-size: 2.125rem;
+  line-height: 2.5rem;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.main-body > h5{
+  font-size: .875rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: .4em;
+    color: white
+}
+
+h3 {
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
+  padding-top: 1px;
+  padding-bottom: 4px;
+}
+
+
