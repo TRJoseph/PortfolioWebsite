@@ -9,8 +9,6 @@ const SummarySection = () => (
                     <h1>Software Developer and Junior Computer Engineering Major</h1>
                     <h3>Over the past few years at university, I have worked with small and large companies alike to
                         successfully help them reach their full potential.
-
-                        
                     </h3>
                     <nav>
                         <h4>HELLO</h4>
