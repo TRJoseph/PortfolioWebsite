@@ -126,14 +126,15 @@ code {
 }
 
 .row {
-  width: 50%
+  width: 50%;
+  display: flex
 }
 
 .wrapper {
   width: 100%;
 }
 
-@media (min-width: 768px) and (min-height: 918px), (min-width: 1280px) {
+@media (min-width: 768px) and (min-height: 918px), (min-width: 1280px) and (min-height: 714px) {
   .wrapper {
     position: absolute;
     bottom: 130px;
