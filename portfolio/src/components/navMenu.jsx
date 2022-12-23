@@ -22,7 +22,7 @@ class navMenu extends Component {
             <ul>
                 <span style={{opacity: this.state.expandedMenuOpacity}} className='expandedMenuX'>&#10006;</span>
                 <i style={{top: this.state.menuTopBarY}}>
-                    <Link to="/test" style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="firstMenuItemLabel" className='expandedMenuItem'>About Me</Link>
+                    <Link to="/about-me" style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="firstMenuItemLabel" className='expandedMenuItem'>About Me</Link>
                 </i>
                 <i style={{top: this.state.menuMiddleBarY}}>
                     <Link style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="secondMenuItemLabel" className='expandedMenuItem'>Work Experience</Link>

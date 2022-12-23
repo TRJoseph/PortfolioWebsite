@@ -71,6 +71,7 @@ code {
   transition: color .2s linear;
 }
 
+
 .menu {
   position: relative;
   display: block;
@@ -78,10 +79,17 @@ code {
   float: right;
   z-index: 1;
   border: 0 none;
-  margin: 60px 40px 0 0;
+  margin: 20px 14px 0 0;
   cursor: pointer;
   color: white;
 }
+
+@media (min-width: 768px) and (min-height: 620px), (min-width: 1280px) {
+  .menu {
+    margin: 60px 40px 0 0;
+  }
+}
+
 
 .expandedMenuItem {
   transition: all .15s linear;
@@ -89,6 +97,11 @@ code {
   position: relative;
   top: -10px;
   cursor: pointer;
+}
+
+#logoElement {
+  height: 75px;
+  margin: 40px 0 0 40px;
 }
 
 .expandedMenuX {
@@ -120,13 +133,11 @@ code {
   width: 100%;
 }
 
-@media (min-width: 768px) and (min-height: 620px), (min-width: 1280px) {
+@media (min-width: 768px) and (min-height: 918px), (min-width: 1280px) {
   .wrapper {
     position: absolute;
     bottom: 130px;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
   }
 }
@@ -140,6 +151,7 @@ code {
 
 .main-body {
   font-family: Apple Chancery, cursive;
+  animation: dropInAnimation .8s linear;
 }
 
 .main-body > h1{
@@ -150,10 +162,11 @@ code {
   padding-bottom: 28px;
   font-weight: 800;
   margin: 0;
+  animation: secondAnimation .8s linear;
 }
 
 .main-body > h5{
-  font-size: .875rem;
+    font-size: .875rem;
     line-height: 1.25rem;
     text-transform: uppercase;
     padding-top: 5px;
@@ -161,7 +174,8 @@ code {
     margin: 0;
     font-weight: 400;
     letter-spacing: .4em;
-    color: white
+    color: #F2F3F5;
+    animation: firstAnimation .6s linear;
 }
 
 h3 {
@@ -171,6 +185,77 @@ h3 {
   padding-bottom: 4px;
   margin: 0;
   color: white;
+  font-weight: 500;
+  animation: thirdAnimation 1s linear;
+}
+
+nav > h4 {
+    font-size: 1.125rem;
+    line-height: 1.5625rem;
+    padding-top: 1px;
+    padding-bottom: 4px;
+    font-weight: 800;
+    letter-spacing: normal;
+    color: white;
+    animation: fourthAnimation 1s linear;
 }
 
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes firstAnimation {
+  0%, 66.667% {
+    opacity: 0;
+    transform: translate3d(0,20px,0);
+  }
+  100% {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes secondAnimation {
+  0%, 75% {
+    opacity: 0;
+    transform: translate3d(0,20px,0);
+  }
+  100% {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes thirdAnimation {
+  0%, 80% {
+    opacity: 0;
+    transform: translate3d(0,20px,0);
+  }
+  100% {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes fourthAnimation {
+  0%, 90% {
+    opacity: 0;
+    transform: translate3d(0,20px,0);
+  }
+  100% {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  }
+}
+
+img {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}

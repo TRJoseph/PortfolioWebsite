@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './header';
-import SummarySection from './frontPageBody'
+import Header from '../components/header';
+import SummarySection from '../components/frontPageBody'
 
 class frontPage extends Component {
     state = {  } 
