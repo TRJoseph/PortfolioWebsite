@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Transition } from 'react-transition-group'
 import { Outlet, Link } from "react-router-dom";
+import styles from '../styles/navMenu.module.css'
 
 class navMenu extends Component {
     constructor() {
@@ -17,18 +18,18 @@ class navMenu extends Component {
     
     state = {  } 
     render() { 
-        return (<nav onMouseEnter={() => this.doNavMenuAnimations()} onMouseLeave={() => this.undoNavMenuAnimations()} onClick={() => this.expandMenu()} id="navMenu" className='menu'>
+        return (<nav onMouseEnter={() => this.doNavMenuAnimations()} onMouseLeave={() => this.undoNavMenuAnimations()} onClick={() => this.expandMenu()} id={styles.navMenu} className={styles.menu}>
             <span>Menu</span>
             <ul>
-                <span style={{opacity: this.state.expandedMenuOpacity}} className='expandedMenuX'>&#10006;</span>
+                <span style={{opacity: this.state.expandedMenuOpacity}} className={styles.expandedMenuX}>&#10006;</span>
                 <i style={{top: this.state.menuTopBarY}}>
-                    <Link to="/about-me" style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="firstMenuItemLabel" className='expandedMenuItem'>About Me</Link>
+                    <Link to="/about-me" style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id={styles.firstMenuItemLabel} className={styles.expandedMenuItem}>About Me</Link>
                 </i>
                 <i style={{top: this.state.menuMiddleBarY}}>
-                    <Link style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="secondMenuItemLabel" className='expandedMenuItem'>Work Experience</Link>
+                    <Link style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id={styles.secondMenuItemLabel}  className={styles.expandedMenuItem}>Work Experience</Link>
                 </i>
                 <i style={{bottom: this.state.menuBottomBarY}}>
-                    <Link style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id="thirdMenuItemLabel" className='expandedMenuItem'>Projects</Link>
+                    <Link style={{opacity: this.state.expandedMenuOpacity, display: this.state.displayMenuItems}} id={styles.thirdMenuItemLabel}  className={styles.expandedMenuItem}>Projects</Link>
                 </i>
             </ul>
         </nav>);

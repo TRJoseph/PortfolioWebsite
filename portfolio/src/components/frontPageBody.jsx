@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../styles/frontPageBody.module.css'
 
 const SummarySection = () => (
     <section>
