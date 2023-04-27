@@ -10,24 +10,34 @@ class frontPage extends Component {
         super(props);
         this.state = {
             showLogo: true,
+            centralizeImageSlider: true,
         };
 
-        this.toggleLogoVisibility = this.toggleLogoVisibility.bind(this);
+        this.toggleEducationSection = this.toggleEducationSection.bind(this);
+        this.centralizeImageSlider = this.centralizeImageSlider.bind(this);
         }
 
 
-        toggleLogoVisibility() {
-        this.setState((prevState) => ({
-            showLogo: !prevState.showLogo,
-        }));
+        toggleEducationSection() {
+            this.setState((prevState) => ({
+                showLogo: !prevState.showLogo,
+            }));
         }
+    
 
+        centralizeImageSlider() {
+            this.setState((prevState) => ({
+                centralizeImageSlider: !prevState.centralizeImageSlider,
+            }));
+        }
+    
 
     render() { 
         const { showLogo } = this.state;
         return (<div>
             {showLogo && <NavBar/>}
-            <ImageSlider toggleLogoVisibility={this.toggleLogoVisibility}/>
+            <ImageSlider toggleEducationSection={this.toggleEducationSection} centralizeImageSlider={this.centralizeImageSlider}
+            centralizeImageSliderState={this.state.centralizeImageSlider}/>
         </div>);
     }
 }

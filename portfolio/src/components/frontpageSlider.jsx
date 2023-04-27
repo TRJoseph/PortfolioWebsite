@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState} from 'react';
 import { Outlet, Link } from "react-router-dom";
-import styles from '../styles/ImageSlider.module.css';
+import '../styles/ImageSlider.module.css';
 import tigerPaw from '../Images/tigerPaw.png';
 import workExp from '../Images/WorkExperience.png';
 import projects from '../Images/tempProjectsImage.png';
@@ -8,7 +8,25 @@ import aboutMe from '../Images/aboutMe.png';
 
 
 const ImageSlider = (props) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const track = useRef(null);
+
+  const handleSectionToggle = () => {
+    props.toggleEducationSection();
+
+    const newLeft = props.centralizeImageSliderState ? '10%': '0%';
+    const newTop = props.centralizeImageSliderState ? '10%': '-50%';
+    console.log(props.centralizeImageSliderState)
+
+    const ImSelector = document.querySelector('.image-track');
+    if (ImSelector) {
+      ImSelector.style.setProperty('--left-translate', newLeft);
+      ImSelector.style.setProperty('--top-translate', newTop);
+    }
+
+    props.centralizeImageSlider();
+  }
   
   const handleOnDown = (e) => {
     track.current.dataset.mouseDownAt = e.clientX;
@@ -41,6 +59,7 @@ const ImageSlider = (props) => {
       }, { duration: 1200, fill: "forwards" });
     }
   };
+  
 
 
   useEffect(() => {
@@ -64,8 +83,8 @@ const ImageSlider = (props) => {
       window.removeEventListener('touchmove', handleTouchMove);
     };
   });
-  return (<div id="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
-  <img onClick={props.toggleLogoVisibility} className="image" src={tigerPaw} draggable="false" />
+  return (<div className={`image-track${isAnimating ? ' animate' : ''}`} ref={track} data-mouse-down-at="0" data-prev-percentage="0">
+  <img onClick={handleSectionToggle} className="image" src={tigerPaw} draggable="false" />
   <img className="image" src={workExp} draggable="false" />
   <img className="image" src={projects} draggable="false" />
   <img className="image" src={aboutMe} draggable="false" />

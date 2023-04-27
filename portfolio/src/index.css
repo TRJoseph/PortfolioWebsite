@@ -271,17 +271,21 @@ nav > h4 {
 }
 
 */
-#image-track {
+
+.image-track {
   display: flex;
   gap: 4vmin;
   position: absolute;
   left: 50%;
   top: 52.5%;
-  transform: translate(0%, -50%); 
+  --left-translate: 0%;
+  --top-translate: -50%;
+  transform: translate(var(--left-translate), var(--top-translate));
   user-select: none;
+  transition: transform 0.5s;
 }
 
-#image-track > .image {
+.image-track > .image {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;
@@ -289,6 +293,18 @@ nav > h4 {
   animation: 1s ease-out 0s 1 slideInFromBottom;
 }
 
+.image-track.animate {
+  animation: move 0.5s forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  100% {
+    transform: translate(10%, 10%);
+  }
+}
 
 body.menu-toggled > .meta-link > span {
   color: rgb(30, 30, 30);
