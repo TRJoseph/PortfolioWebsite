@@ -24,7 +24,6 @@ code {
   right: 0;
   margin-top: -12px;
 }
-
 .menu > ul > i {
   position: absolute;
   background: #0f141e;
@@ -36,30 +35,23 @@ code {
   transform: translate3d(0,0,0);
   background-color: white;
 }
-
 .menu > ul > i > a {
   text-decoration: none;
   color: white;
 }
-
 .menu > ul > i > a:visited{
   text-decoration: none;
   color: white
 }
-
-
 .menu > ul > i:nth-of-type(1) {
   top: 3px;
 }
-
 .menu > ul > i:nth-of-type(2) {
   top: 10px
 }
-
 .menu > ul > i:nth-of-type(3) {
   bottom: 2px
 }
-
 .menu > span {
   display: block;
   color: white;
@@ -71,8 +63,6 @@ code {
   margin: 15px 35px 0 0;
   transition: color .2s linear;
 }
-
-
 .menu {
   position: relative;
   display: block;
@@ -84,14 +74,11 @@ code {
   cursor: pointer;
   color: white;
 }
-
 @media (min-width: 768px) and (min-height: 620px), (min-width: 1280px) {
   .menu {
     margin: 60px 40px 0 0;
   }
 }
-
-
 .expandedMenuItem {
   transition: all .15s linear;
   white-space: nowrap;
@@ -99,13 +86,11 @@ code {
   top: -10px;
   cursor: pointer;
 }
-
 #logoElement {
   height: 75px;
   margin: 40px 0 0 40px;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
-
 .expandedMenuX {
   transition: all .15s linear;
     white-space: nowrap;
@@ -114,28 +99,22 @@ code {
     top: 0.5px;
     cursor: pointer;
 }
-
 #firstMenuItemLabel {
   right: 82.14px;
 }
-
 #secondMenuItemLabel {
   right: 134.66px
 }
-
 #thirdMenuItemLabel {
   right: 68.39px
 }
-
 .row {
   width: 50%;
   display: flex
 }
-
 .wrapper {
   width: 100%;
 }
-
 @media (min-width: 768px) and (min-height: 918px), (min-width: 1280px) and (min-height: 714px) {
   .wrapper {
     position: absolute;
@@ -144,19 +123,16 @@ code {
     transform: translateX(-50%);
   }
 }
-
 @media (min-width: 1480px) {
   .wrapper {
     max-width: 1480px;
     margin: 0 auto;
   }  
 }
-
 .main-body {
   font-family: Apple Chancery, cursive;
   animation: dropInAnimation .8s linear;
 }
-
 .main-body > h1{
   color: white;
   font-size: 4.5rem;
@@ -167,7 +143,6 @@ code {
   margin: 0;
   animation: secondAnimation .8s linear;
 }
-
 .main-body > h5{
     font-size: .875rem;
     line-height: 1.25rem;
@@ -180,7 +155,6 @@ code {
     color: #F2F3F5;
     animation: firstAnimation .6s linear;
 }
-
 h3 {
   font-size: 1.125rem;
   line-height: 1.5625rem;
@@ -191,7 +165,6 @@ h3 {
   font-weight: 500;
   animation: thirdAnimation 1s linear;
 }
-
 nav > h4 {
     font-size: 1.125rem;
     line-height: 1.5625rem;
@@ -202,8 +175,6 @@ nav > h4 {
     color: white;
     animation: fourthAnimation 1s linear;
 }
-
-
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -214,7 +185,6 @@ nav > h4 {
     opacity: 1;
   }
 }
-
 @keyframes slideInFromBottom {
   0% {
     transform: translateY(100%);
@@ -225,7 +195,6 @@ nav > h4 {
     opacity: 1;
   }
 }
-
 @keyframes firstAnimation {
   0%, 66.667% {
     opacity: 0;
@@ -236,7 +205,6 @@ nav > h4 {
   transform: translate3d(0,0,0);
   }
 }
-
 @keyframes secondAnimation {
   0%, 75% {
     opacity: 0;
@@ -247,7 +215,6 @@ nav > h4 {
   transform: translate3d(0,0,0);
   }
 }
-
 @keyframes thirdAnimation {
   0%, 80% {
     opacity: 0;
@@ -258,7 +225,6 @@ nav > h4 {
   transform: translate3d(0,0,0);
   }
 }
-
 @keyframes fourthAnimation {
   0%, 90% {
     opacity: 0;
@@ -269,7 +235,6 @@ nav > h4 {
   transform: translate3d(0,0,0);
   }
 }
-
 */
 
 .image-track {
@@ -280,9 +245,13 @@ nav > h4 {
   top: 52.5%;
   --left-translate: 0%;
   --top-translate: -50%;
-  transform: translate(var(--left-translate), var(--top-translate));
+  --translateX: 0;
+  transform: translate(calc(var(--translateX, 0) * 1%), var(--top-translate));
   user-select: none;
-  transition: transform 0.5s;
+}
+
+.image-track-toggle-animation {
+  transition: transform 1.5s;
 }
 
 .image-track > .image {
@@ -291,10 +260,6 @@ nav > h4 {
   object-fit: cover;
   object-position: 100% center;
   animation: 1s ease-out 0s 1 slideInFromBottom;
-}
-
-.image-track.animate {
-  animation: move 0.5s forwards;
 }
 
 @keyframes move {
