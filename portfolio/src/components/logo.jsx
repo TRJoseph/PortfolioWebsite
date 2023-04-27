@@ -14,6 +14,7 @@ class logo extends Component {
     state = {  };
     
     render() { 
+        
         return (<Link to="/"><img onMouseEnter={() => this.setState({ opacity: 0.65})} onMouseLeave={() => this.setState({ opacity: 1})} id={styles.logoElement} style={this.state} src={logoElement} alt={"logo"}/>
             </Link>);
     }

@@ -1,12 +1,15 @@
-import React, { useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
+import { Outlet, Link } from "react-router-dom";
 import styles from '../styles/ImageSlider.module.css';
 import tigerPaw from '../Images/tigerPaw.png';
-import workExp from '../Images/WorkExperience.png'
-import projects from '../Images/tempProjectsImage.png'
+import workExp from '../Images/WorkExperience.png';
+import projects from '../Images/tempProjectsImage.png';
+import aboutMe from '../Images/aboutMe.png';
+
 
 const ImageSlider = () => {
   const track = useRef(null);
-
+  
   const handleOnDown = (e) => {
     track.current.dataset.mouseDownAt = e.clientX;
   };
@@ -39,6 +42,7 @@ const ImageSlider = () => {
     }
   };
 
+
   useEffect(() => {
     const handleTouchStart = (e) => handleOnDown(e.touches[0]);
     const handleTouchEnd = () => handleOnUp();
@@ -60,11 +64,11 @@ const ImageSlider = () => {
       window.removeEventListener('touchmove', handleTouchMove);
     };
   });
-
   return (<div id="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
   <img className="image" src={tigerPaw} draggable="false" />
   <img className="image" src={workExp} draggable="false" />
   <img className="image" src={projects} draggable="false" />
+  <img className="image" src={aboutMe} draggable="false" />
 
     </div>
   );
