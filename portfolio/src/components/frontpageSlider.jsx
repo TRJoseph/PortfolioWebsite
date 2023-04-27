@@ -63,6 +63,7 @@ const ImageSlider = (props) => {
 
 
   useEffect(() => {
+    track.current.dataset.prevPercentage = '0';
     const handleTouchStart = (e) => handleOnDown(e.touches[0]);
     const handleTouchEnd = () => handleOnUp();
     const handleTouchMove = (e) => handleOnMove(e.touches[0]);
