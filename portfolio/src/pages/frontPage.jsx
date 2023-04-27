@@ -3,6 +3,7 @@ import SummarySection from '../components/frontPageBody'
 import ImageSlider from '../components/frontpageSlider'
 import LogoComponent from '../components/logo'
 import MenuComponent from '../components/navMenu'
+import NavBar from '../components/navBar';
 
 class frontPage extends Component {
     constructor(props) {
@@ -25,8 +26,7 @@ class frontPage extends Component {
     render() { 
         const { showLogo } = this.state;
         return (<div>
-             {showLogo && <LogoComponent />}
-            <MenuComponent/>
+            {showLogo && <NavBar/>}
             <ImageSlider toggleLogoVisibility={this.toggleLogoVisibility}/>
         </div>);
     }

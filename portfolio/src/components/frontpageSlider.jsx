@@ -7,7 +7,7 @@ import projects from '../Images/tempProjectsImage.png';
 import aboutMe from '../Images/aboutMe.png';
 
 
-const ImageSlider = () => {
+const ImageSlider = (props) => {
   const track = useRef(null);
   
   const handleOnDown = (e) => {
@@ -65,7 +65,7 @@ const ImageSlider = () => {
     };
   });
   return (<div id="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
-  <img className="image" src={tigerPaw} draggable="false" />
+  <img onClick={props.toggleLogoVisibility} className="image" src={tigerPaw} draggable="false" />
   <img className="image" src={workExp} draggable="false" />
   <img className="image" src={projects} draggable="false" />
   <img className="image" src={aboutMe} draggable="false" />
