@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 import '../styles/ImageSlider.module.css';
 import tigerPaw from '../Images/tigerPaw.png';
 import workExp from '../Images/WorkExperience.png';
-import projects from '../Images/tempProjectsImage.png';
+import projects from '../Images/ProjectsImage.png';
 import aboutMe from '../Images/aboutMe.png';
 
 
