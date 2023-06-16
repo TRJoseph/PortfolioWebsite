@@ -3,12 +3,13 @@ import { Outlet, Link } from "react-router-dom";
 import '../styles/ImageSlider.module.css';
 import tigerPaw from '../Images/tigerPaw.png';
 import workExp from '../Images/WorkExperience.png';
-import projects from '../Images/tempProjectsImage.png';
+import projects from '../Images/ProjectsImage.png';
 import aboutMe from '../Images/aboutMe.png';
 
 
 const ImageSlider = (props) => {
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isCentralizedImageSlider, setIsCentralizedImageSlider] = useState(false); // New state variable
 
   const track = useRef(null); // reference to the image track element
   const prevPercentageRef = useRef(0); // stores the previous percentage value for the slider
@@ -17,27 +18,45 @@ const ImageSlider = (props) => {
   var navigateToNewSectionDiffOnUp = 0;
   var toggleSection = true; // flag for toggling the section
 
-  const handleSectionToggle = () => {
+
+
+  const handleSectionToggle = (id) => {
     if (toggleSection) {
-      props.toggleEducationSection();
-  
-      const newLeft = props.centralizeImageSliderState ? "10%" : "0%";
-      const newTop = props.centralizeImageSliderState ? "10%" : "-50%";
-  
+      props.centralizeImageSlider();
+      const newLeft = props.centralizeImageSliderState ? "-33%" : (prevPercentageRef.current + "%");
+      const newTop = props.centralizeImageSliderState ? "30%" : "-50%";
+      const currentScale = props.centralizeImageSliderState ? "0.25" : "1";
+      setIsCentralizedImageSlider(!isCentralizedImageSlider);
+
       const ImSelector = document.querySelector(".image-track");
       if (ImSelector) {
-        ImSelector.classList.add("image-track-toggle-animation");
-        ImSelector.style.setProperty("--left-translate", newLeft);
-        ImSelector.style.setProperty("--top-translate", newTop);
-  
-        // Remove the class after the transition duration
-        setTimeout(() => {
-          ImSelector.classList.remove("image-track-toggle-animation");
-        }, 500);
+        ImSelector.animate({
+          transform:`scale(${currentScale}) translate(${newLeft},${newTop})`},
+          { duration: 100, fill: "forwards"
+        });
+      }
+
+      switch(id) {
+        case 'tigerPaw':
+          // Code for tigerPaw
+          props.toggleEducationSection();
+          break;
+        case 'workExp':
+          // Code for workExp
+          break;
+        case 'projects':
+          // Code for projects
+          break;
+        case 'aboutMe':
+          // Code for aboutMe
+          break;
+        default:
+          // Default code if no case matches
       }
   
-      props.centralizeImageSlider();
     }
+
+
   };
   
   // Function that handles the mouse down event
@@ -66,7 +85,7 @@ const ImageSlider = (props) => {
       // Calculate the difference between the current position and the previous position
       navigateToNewSectionDiffOnUp = Math.abs(parseFloat(track.current.dataset.mouseDownAt + track.current.dataset.percentage));
     }
-  
+
     /*'toggleSection' controls whether the slider will actually slide down and show the desired section.
     * This only gets set to true if the user clicks a card down and releases their mouse up without moving their mouse.
     * This is to determine between whether the user wants to drag through the slider or view a section.
@@ -86,8 +105,8 @@ const ImageSlider = (props) => {
   
 
   const handleOnMove = (e) => {
-    if (track.current.dataset.mouseDownAt === "0") return;
-  
+    if (track.current.dataset.mouseDownAt === "0" || isCentralizedImageSlider) return;
+    debugger;
     const mouseDelta = parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
           maxDelta = window.innerWidth / 2;
   
@@ -99,9 +118,12 @@ const ImageSlider = (props) => {
   
     const ImSelector = document.querySelector('.image-track');
     if (ImSelector) {
-      ImSelector.style.setProperty('--translateX', nextPercentage);
+      ImSelector.animate({
+        transform:`translate(${nextPercentage}%, -50%)`},
+        { duration: 1200, fill: "forwards"
+      });
     }
-  
+    
     for (const image of track.current.getElementsByClassName("image")) {
       image.animate({
         objectPosition: `${100 + nextPercentage}% center`
@@ -132,14 +154,15 @@ const ImageSlider = (props) => {
       window.removeEventListener('touchmove', handleTouchMove);
     };
   });
-  return (<div className="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
-  <img onClick={handleSectionToggle} className="image" src={tigerPaw} draggable="false" />
-  <img className="image" src={workExp} draggable="false" />
-  <img className="image" src={projects} draggable="false" />
-  <img className="image" src={aboutMe} draggable="false" />
-
+  return (
+    <div className="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
+      <img onClick={() => handleSectionToggle('tigerPaw')} className="image" id="tigerPaw" src={tigerPaw} draggable="false" />
+      <img onClick={() => handleSectionToggle('workExp')} className="image" id="workExp" src={workExp} draggable="false" />
+      <img onClick={() => handleSectionToggle('projects')} className="image" id="projects" src={projects} draggable="false" />
+      <img onClick={() => handleSectionToggle('aboutMe')} className="image" id="aboutMe" src={aboutMe} draggable="false" />
     </div>
   );
+  
 };
 
 export default ImageSlider;
