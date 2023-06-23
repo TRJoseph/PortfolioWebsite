@@ -6,8 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background: linear-gradient(45deg, #0677A1 0%, #895061 100%);
   overflow: hidden;
+  background-color: #1b1c1c;
 }
 
 code {
@@ -323,12 +323,7 @@ body.menu-toggled > .meta-link > span {
 } 
 
 .upper-right-text {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 40px 10px 0 40px;
+  float: right;
   font-size: 16px;
 }

@@ -19,7 +19,6 @@ const ImageSlider = (props) => {
   var toggleSection = true; // flag for toggling the section
 
 
-
   const handleSectionToggle = (id) => {
     if (toggleSection) {
       props.centralizeImageSlider();
@@ -32,15 +31,15 @@ const ImageSlider = (props) => {
       if (ImSelector) {
         ImSelector.animate({
           transform:`scale(${currentScale}) translate(${newLeft},${newTop})`},
-          { duration: 100, fill: "forwards"
+          { duration: 300, fill: "forwards"
         });
       }
 
       switch(id) {
         case 'tigerPaw':
           // Code for tigerPaw
-          props.toggleEducationSection();
-          break;
+          props.toggleShowLogo();
+          props.toggleShowEducationSection();
         case 'workExp':
           // Code for workExp
           break;
@@ -106,7 +105,6 @@ const ImageSlider = (props) => {
 
   const handleOnMove = (e) => {
     if (track.current.dataset.mouseDownAt === "0" || isCentralizedImageSlider) return;
-    debugger;
     const mouseDelta = parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
           maxDelta = window.innerWidth / 2;
   

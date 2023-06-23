@@ -4,7 +4,10 @@ import ImageSlider from '../components/frontpageSlider'
 import LogoComponent from '../components/logo'
 import MenuComponent from '../components/navMenu'
 import NavBar from '../components/navBar';
-
+import EducationSection from '../components/educationSection'
+import WorkSection from '../components/workSection'
+import ProjectSection from '../components/projectSection'
+import AboutMeSection from '../components/aboutMeSection'
 
 function useToggle(initialValue) {
   const [value, setValue] = useState(initialValue);
@@ -13,14 +16,24 @@ function useToggle(initialValue) {
 }
 
 const FrontPage = () => {
-  const [showLogo, toggleShowLogo] = useToggle(true); 
+  const [showLogo, toggleShowLogo] = useToggle(true);
+
+  const [showEducationSection, showEducationSectionToggle] = useToggle(false); 
+  const [showWorkSection, showWorkSectionToggle] = useToggle(false); 
+  const [showProjectSection, showProjectSectionToggle] = useToggle(false); 
+  const [showAboutMeSection, showAboutMeSectionToggle] = useToggle(false); 
   const [centralizeImageSlider, toggleCentralizeImageSlider] = useToggle(true);
 
   return (
     <div>
       {showLogo && <NavBar/>}
+      {showEducationSection && <EducationSection/>}
+      {showWorkSection && <WorkSection/>}
+      {showProjectSection && <ProjectSection/>}
+      {showAboutMeSection && <AboutMeSection/>}
       <ImageSlider
-        toggleEducationSection={toggleShowLogo} 
+        toggleShowLogo={toggleShowLogo}
+        toggleShowEducationSection={showEducationSectionToggle}
         centralizeImageSlider={toggleCentralizeImageSlider}
         centralizeImageSliderState={centralizeImageSlider}/>
     </div>
