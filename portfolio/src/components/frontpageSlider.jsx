@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState} from 'react';
 import { Outlet, Link } from "react-router-dom";
 import '../styles/ImageSlider.module.css';
-import tigerPaw from '../Images/tigerPaw.png';
+import education from '../Images/tigerPaw.png';
 import workExp from '../Images/WorkExperience.png';
 import projects from '../Images/ProjectsImage.png';
 import aboutMe from '../Images/aboutMe.png';
@@ -29,33 +29,15 @@ const ImageSlider = (props) => {
 
       const ImSelector = document.querySelector(".image-track");
       if (ImSelector) {
+        ImSelector.style.transform = 'translateZ(0)'; 
+        ImSelector.style.willChange = 'transform'; 
         ImSelector.animate({
           transform:`scale(${currentScale}) translate(${newLeft},${newTop})`},
           { duration: 300, fill: "forwards"
         });
       }
-
-      switch(id) {
-        case 'tigerPaw':
-          // Code for tigerPaw
-          props.toggleShowLogo();
-          props.toggleShowEducationSection();
-        case 'workExp':
-          // Code for workExp
-          break;
-        case 'projects':
-          // Code for projects
-          break;
-        case 'aboutMe':
-          // Code for aboutMe
-          break;
-        default:
-          // Default code if no case matches
-      }
-  
+      props.toggleSection(id);
     }
-
-
   };
   
   // Function that handles the mouse down event
@@ -116,6 +98,8 @@ const ImageSlider = (props) => {
   
     const ImSelector = document.querySelector('.image-track');
     if (ImSelector) {
+      ImSelector.style.transform = 'translateZ(0)';
+      ImSelector.style.willChange = 'transform';
       ImSelector.animate({
         transform:`translate(${nextPercentage}%, -50%)`},
         { duration: 1200, fill: "forwards"
@@ -154,7 +138,7 @@ const ImageSlider = (props) => {
   });
   return (
     <div className="image-track" ref={track} data-mouse-down-at="0" data-prev-percentage="0">
-      <img onClick={() => handleSectionToggle('tigerPaw')} className="image" id="tigerPaw" src={tigerPaw} draggable="false" />
+      <img onClick={() => handleSectionToggle('education')} className="image" id="ecucation" src={education} draggable="false" />
       <img onClick={() => handleSectionToggle('workExp')} className="image" id="workExp" src={workExp} draggable="false" />
       <img onClick={() => handleSectionToggle('projects')} className="image" id="projects" src={projects} draggable="false" />
       <img onClick={() => handleSectionToggle('aboutMe')} className="image" id="aboutMe" src={aboutMe} draggable="false" />

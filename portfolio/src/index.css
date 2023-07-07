@@ -242,7 +242,7 @@ nav > h4 {
   gap: 4vmin;
   position: absolute;
   left: 50%;
-  top: 52.5%;
+  top: 55%;
   --left-translate: 0%;
   --top-translate: -50%;
   --translateX: 0;
@@ -323,7 +323,17 @@ body.menu-toggled > .meta-link > span {
 } 
 
 .upper-right-text {
-  margin: 40px 10px 0 40px;
+  margin: 40px 35px 0 40px;
   float: right;
   font-size: 16px;
+  color:white;
+}
+
+.upper-right-text > h3 {
+    font-size: 20px;
+    text-align: right;
+}
+
+.upper-right-text > h4 {
+  text-align: right;
 }

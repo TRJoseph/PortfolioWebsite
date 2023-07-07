@@ -16,24 +16,32 @@ function useToggle(initialValue) {
 }
 
 const FrontPage = () => {
+  const [activeSection, setActiveSection] = useState(''); // This will store the currently active section
   const [showLogo, toggleShowLogo] = useToggle(true);
-
-  const [showEducationSection, showEducationSectionToggle] = useToggle(false); 
-  const [showWorkSection, showWorkSectionToggle] = useToggle(false); 
-  const [showProjectSection, showProjectSectionToggle] = useToggle(false); 
-  const [showAboutMeSection, showAboutMeSectionToggle] = useToggle(false); 
   const [centralizeImageSlider, toggleCentralizeImageSlider] = useToggle(true);
+
+  const toggleSection = (section) => {
+    if (activeSection) {
+      // If there's an active section, close it and do nothing else
+      setActiveSection('');
+      toggleShowLogo();
+    } else {
+      // If there's no active section, open the clicked section
+      setActiveSection(section);
+      toggleShowLogo();
+    }
+  };
 
   return (
     <div>
       {showLogo && <NavBar/>}
-      {showEducationSection && <EducationSection/>}
-      {showWorkSection && <WorkSection/>}
-      {showProjectSection && <ProjectSection/>}
-      {showAboutMeSection && <AboutMeSection/>}
+      {activeSection === 'education' && <EducationSection/>}
+      {activeSection === 'workExp' && <WorkSection/>}
+      {activeSection === 'projects' && <ProjectSection/>}
+      {activeSection === 'aboutMe' && <AboutMeSection/>}
       <ImageSlider
         toggleShowLogo={toggleShowLogo}
-        toggleShowEducationSection={showEducationSectionToggle}
+        toggleSection={toggleSection}
         centralizeImageSlider={toggleCentralizeImageSlider}
         centralizeImageSliderState={centralizeImageSlider}/>
     </div>

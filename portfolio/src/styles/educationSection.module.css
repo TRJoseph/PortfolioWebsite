@@ -1,0 +1,62 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .education-header {
+    animation: slideInFromLeft 1s forwards;
+    color: #FF7043;
+    padding-left: 25px;
+  }
+  
+  .education-container {
+    margin: 200px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .education-section {
+    background-color: #A9A9A9; /* Lighter gray color */
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .education-container .clemson-university {
+    color: #F56600; /* Clemson Orange. Adjust this to your preference */
+    /* 998735  for camden high school color maybe*/
+    margin-bottom: 0;
+  }
+
+  .education-container .camden-high-school { 
+    color: #998735;
+    margin-bottom: 0;
+  }
+
+
+  .education-header-container {
+    display: flex;
+    align-items: center;  /* This will vertically align the text and image */
+    justify-content: space-between;
+  }
+
+  .years {
+    margin: 0;
+    color:#3B3B3B;
+  }
+
+  .cuLogo {
+    width: 50px;  /* Adjust as needed */
+    height: 50px;  /* Adjust as needed */
+  }
+  
+  .chsLogo {
+    width: 62px;
+    height: 50px;
+  }
