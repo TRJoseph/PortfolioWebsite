@@ -13,13 +13,45 @@
 }
 
 .work-container {
-    padding: 10px;
+    padding: 45px;
     border-radius: 10px;
+    height: 658px;
+    overflow-y: scroll;
   }
 
   .work-section {
-    background-color: #A9A9A9; /* Lighter gray color */
+    background-color: #FFFFFF; /* Lighter gray color */
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
+  }
+
+  .work-external-link {
+    color: inherit; /* inherits the color of the parent element */
+    text-decoration: none; /* removes the underline */
+    float: right;
+  }
+
+  .company {
+    color: #6A5ACD;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 5px
+  }
+
+  .position {
+    color: #333; /* dark gray */
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 5px
+  }
+
+  .h4Element {
+    color: #555; /* medium gray */
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0
   }

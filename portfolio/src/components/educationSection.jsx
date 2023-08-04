@@ -3,6 +3,7 @@ import NavBar from './navBar';
 import styles from '../styles/educationSection.module.css';
 import clemsonpaw from '../Images/clemsonpaw.png'
 import chsLogo from '../Images/chsLogo.png'
+import BackArrow from './backArrow';
 
 class educationSection extends Component {
 
@@ -32,8 +33,14 @@ class educationSection extends Component {
     const { education } = this.state;
     
     return (
+      <div>
+
       <div className={styles["education-container"]}>
-      <h1 className={styles["education-header"]}>Education</h1>
+        <div className={styles["education-title-container"]}>
+        <BackArrow onClick={this.props.goBackToMainMenu}/>
+          <h1 className={styles["education-header"]}>Education</h1>
+        </div>
+
       {education.map((edu, index) => {
         let h2Class = '';
         let imgClass = '';
@@ -58,6 +65,8 @@ class educationSection extends Component {
         )
       })}
     </div>
+      </div>
+      
     );
   }
 }

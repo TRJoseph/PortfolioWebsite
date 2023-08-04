@@ -15,11 +15,16 @@
     padding-left: 25px;
   }
   
+  .education-title-container {
+    display: flex;
+    align-items: center;
+  }
+
   .education-container {
-    margin: 200px;
     padding: 10px;
     border-radius: 10px;
   }
+
 
   .education-section {
     background-color: #A9A9A9; /* Lighter gray color */

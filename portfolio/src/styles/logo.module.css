@@ -1,6 +1,6 @@
 #logoElement {
     height: 75px;
-    margin: 40px 0 0 40px;
+    margin: 2em 0 0 3em;
     animation: 1s ease-out 0s 1 slideInFromLeft;
   }
 
