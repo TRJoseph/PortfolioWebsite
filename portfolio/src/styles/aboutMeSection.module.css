@@ -1,0 +1,73 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+
+.about-me-container {
+    padding: 10px;
+    border-radius: 10px;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .about-me-title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .about-me-section {
+    background-color: #A9A9A9; /* Lighter gray color */
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  @media only screen and (max-width: 1000px) { 
+    .about-me-internal-section {
+      display: block;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) { 
+    .about-me-internal-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  }
+
+
+  .about-me-text {
+    flex-basis: 45%; /* This will take up 45% of the container width */
+  }
+  
+  .about-me-image {
+    flex-basis: 45%; /* This will take up 45% of the container width */
+    text-align: center;
+  }
+
+  .about-me-image > img {
+    max-width: 50%;
+    height: auto;
+  }
+
+  .about-me-header {
+    animation: slideInFromLeft 1s forwards;
+    color: #FF7043;
+    padding-left: 25px;
+  }

@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect} from 'react';
-import SummarySection from '../components/frontPageBody'
+import React, { Component, useState, useEffect, useRef} from 'react';
 import ImageSlider from '../components/frontpageSlider'
 import LogoComponent from '../components/logo'
 import MenuComponent from '../components/navMenu'
@@ -18,13 +17,13 @@ function useToggle(initialValue) {
 const FrontPage = () => {
   const [activeSection, setActiveSection] = useState(''); // This will store the currently active section
   const [showLogo, toggleShowLogo] = useToggle(true);
-  
-  const [centralizeImageSlider, toggleCentralizeImageSlider] = useToggle(true);
+  const [isCentralizedImageSlider, setIsCentralizedImageSlider] = useState(true);
 
-  const [isCentralizedImageSlider, setIsCentralizedImageSlider] = useState(false);
-
+  const toggleCentralizeImageSlider = () => setIsCentralizedImageSlider(!isCentralizedImageSlider);
 
   const [isBigScreen, setBigScreen] = useState(window.innerWidth > 768);
+
+  const prevPercentageRef = useRef(0); // stores the previous percentage value for the slider
 
   const toggleSection = (section) => {
     if (activeSection) {
@@ -52,27 +51,25 @@ const FrontPage = () => {
 
   const goBackToMainMenu = () => {
     if (window.innerWidth > 768) {
-      toggleCentralizeImageSlider(false);
-      setIsCentralizedImageSlider(false);
-  
+    setIsCentralizedImageSlider(true);
         const ImSelector = document.querySelector(".image-track");
         if (ImSelector) {
           ImSelector.style.transform = 'translateZ(0)'; 
           ImSelector.style.willChange = 'transform'; 
           ImSelector.animate({
-            transform:`scale(1) translate(0%,-50%)`},
+            transform:`scale(1) translate(${prevPercentageRef.current}%,-50%)`},
             { duration: 300, fill: "forwards"
           });
         }
         toggleSection(activeSection);
     } else {
-      toggleCentralizeImageSlider(false);
-      setIsCentralizedImageSlider(false);
+      setIsCentralizedImageSlider(true);
+
       toggleSection(activeSection);
       const ImSelector = document.querySelector(".image-track");
 
       if (ImSelector) {
-        if (centralizeImageSlider) {
+        if (isCentralizedImageSlider) {
           // Hide the image track
           ImSelector.style.display = 'none';
         } else {
@@ -84,23 +81,20 @@ const FrontPage = () => {
     
 
   }
-
-
   return (
     <div>
       {showLogo && <NavBar showUpperRightText={isBigScreen}/>}
       {activeSection === 'education' && <EducationSection goBackToMainMenu={goBackToMainMenu}/>}
-      {activeSection === 'workExp' && <WorkSection/>}
-      {activeSection === 'projects' && <ProjectSection />}
-      {activeSection === 'aboutMe' && <AboutMeSection/>}
+      {activeSection === 'workExp' && <WorkSection goBackToMainMenu={goBackToMainMenu}/>}
+      {activeSection === 'projects' && <ProjectSection goBackToMainMenu={goBackToMainMenu}/>}
+      {activeSection === 'aboutMe' && <AboutMeSection goBackToMainMenu={goBackToMainMenu}/>}
       <div>
       <ImageSlider
+        prevPercentageRef={prevPercentageRef}
         isBigScreen={isBigScreen}
         toggleShowLogo={toggleShowLogo}
         toggleSection={toggleSection}
-        centralizeImageSlider={toggleCentralizeImageSlider}
-        centralizeImageSliderState={centralizeImageSlider}
-        setIsCentralizedImageSlider={setIsCentralizedImageSlider}
+        toggleCentralizeImageSlider={toggleCentralizeImageSlider}
         isCentralizedImageSlider={isCentralizedImageSlider}/>
 
       </div>

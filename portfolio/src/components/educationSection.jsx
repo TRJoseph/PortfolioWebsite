@@ -37,7 +37,7 @@ class educationSection extends Component {
 
       <div className={styles["education-container"]}>
         <div className={styles["education-title-container"]}>
-        <BackArrow onClick={this.props.goBackToMainMenu}/>
+          <BackArrow onClick={this.props.goBackToMainMenu}/>
           <h1 className={styles["education-header"]}>Education</h1>
         </div>
 

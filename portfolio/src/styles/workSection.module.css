@@ -10,6 +10,7 @@
 .work-header {
     animation: fadeIn 1s forwards;
     color: #FF7043;
+    padding-left: 25px;
 }
 
 .work-container {
@@ -17,6 +18,11 @@
     border-radius: 10px;
     height: 658px;
     overflow-y: scroll;
+  }
+
+  .work-title-container {
+    display: flex;
+    align-items: center;
   }
 
   .work-section {

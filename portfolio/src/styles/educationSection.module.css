@@ -37,11 +37,13 @@
     color: #F56600; /* Clemson Orange. Adjust this to your preference */
     /* 998735  for camden high school color maybe*/
     margin-bottom: 0;
+    margin-top: 0;
   }
 
   .education-container .camden-high-school { 
     color: #998735;
     margin-bottom: 0;
+    margin-top: 0;
   }
 
 

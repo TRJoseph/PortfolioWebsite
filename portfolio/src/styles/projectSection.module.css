@@ -25,16 +25,25 @@
     border-radius: 10px;
   }
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
-    grid-gap: 250px;
+  .projects-title-container {
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
   }
-  
-  .grid-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    font-size: 1.5em;
+
+
+  @media only screen and (max-width: 768px) {
+    .grid-container {
+      display: grid;
+      grid-gap: 250px;
+    }
+  }
+  @media only screen and (min-width: 768px) { 
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+      grid-gap: 250px;
+    }
   }
 
   .project-section {

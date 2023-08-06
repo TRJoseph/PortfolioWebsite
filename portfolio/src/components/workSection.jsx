@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../styles/workSection.module.css'; // import your styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import BackArrow from './backArrow';
 
 class WorkSection extends Component {
   state = {
@@ -50,7 +51,11 @@ class WorkSection extends Component {
     const { work } = this.state;
     return (
       <div className={styles["work-container"]}>
-        <h1 className={styles["work-header"]}>Work Experience</h1>
+        <div className={styles["work-title-container"]}>
+          <BackArrow onClick={this.props.goBackToMainMenu}/>
+          <h1 className={styles["work-header"]}>Work Experience</h1>
+        </div>
+
         {work.map((job, index) => (
           <div className={styles["work-section"]} key={index}>
             <h1 className={styles["company"]}>

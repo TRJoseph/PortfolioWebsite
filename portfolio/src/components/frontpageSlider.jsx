@@ -11,7 +11,7 @@ const ImageSlider = (props) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const track = useRef(null); // reference to the image track element
-  const prevPercentageRef = useRef(0); // stores the previous percentage value for the slider
+  //const prevPercentageRef = useRef(0); // stores the previous percentage value for the slider
 
   var navigateToNewSectionDiff = 0;
   var navigateToNewSectionDiffOnUp = 0;
@@ -20,12 +20,12 @@ const ImageSlider = (props) => {
   const handleSectionToggle = (id) => {
     if (props.isBigScreen) {
       if(toggleSection) {
-        props.centralizeImageSlider();
-        const newLeft = props.centralizeImageSliderState ? "-33%" : (prevPercentageRef.current + "%");
-        const newTop = props.centralizeImageSliderState ? "30%" : "-50%";
-        const currentScale = props.centralizeImageSliderState ? "0.25" : "1";
-        props.setIsCentralizedImageSlider(!props.isCentralizedImageSlider)
+        const newLeft = props.isCentralizedImageSlider ? "-33%" : (props.prevPercentageRef.current + "%");
+        const newTop = props.isCentralizedImageSlider ? "30%" : "-50%";
+        const currentScale = props.isCentralizedImageSlider ? "0.25" : "1";
   
+        props.toggleCentralizeImageSlider();
+        
         const ImSelector = document.querySelector(".image-track");
         if (ImSelector) {
           ImSelector.style.transform = 'translateZ(0)'; 
@@ -38,13 +38,12 @@ const ImageSlider = (props) => {
         props.toggleSection(id);
       }
     } else {
-      props.centralizeImageSlider();
+      props.toggleCentralizeImageSlider();
       props.toggleSection(id);
-      props.setIsCentralizedImageSlider(!props.isCentralizedImageSlider)
       const ImSelector = document.querySelector(".image-track");
 
       if (ImSelector) {
-        if (props.centralizeImageSliderState) {
+        if (props.isCentralizedImageSlider) {
           // Hide the image track
           ImSelector.style.display = 'none';
         } else {
@@ -100,19 +99,19 @@ const ImageSlider = (props) => {
     track.current.dataset.mouseDownAt = '0';
   
     // Update the prevPercentageRef value to the current percentage value
-    prevPercentageRef.current = parseFloat(track.current.dataset.percentage);
+    props.prevPercentageRef.current = parseFloat(track.current.dataset.percentage);
   }
   };
   
 
   const handleOnMove = (e) => {
     if (props.isBigScreen) {
-      if (track.current.dataset.mouseDownAt === "0" || props.isCentralizedImageSlider) return;
+      if (track.current.dataset.mouseDownAt === "0" || !props.isCentralizedImageSlider) return;
       const mouseDelta = parseFloat(track.current.dataset.mouseDownAt) - e.clientX,
             maxDelta = window.innerWidth / 2;
     
       const percentage = (mouseDelta / maxDelta) * -100,
-            nextPercentageUnconstrained = parseFloat(prevPercentageRef.current) + percentage,
+            nextPercentageUnconstrained = parseFloat(props.prevPercentageRef.current) + percentage,
             nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
     
       track.current.dataset.percentage = nextPercentage;
