@@ -46,6 +46,7 @@ class projectSection extends Component {
               <div key={index} className={`${styles['project-section']} ${styles['grid-item']}`}>
                 <h1 className={styles["project-title"]}>{project.project}</h1>
                 <h2 className={styles["project-date"]}>{project.timePeriod}</h2>
+                <p className={styles["project-description"]}> {project.description}</p>
               </div>
             ))}
           </div>

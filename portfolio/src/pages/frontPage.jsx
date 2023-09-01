@@ -50,7 +50,7 @@ const FrontPage = () => {
   }, []);
 
   const goBackToMainMenu = () => {
-    if (window.innerWidth > 768) {
+    if (isBigScreen) {
     setIsCentralizedImageSlider(true);
         const ImSelector = document.querySelector(".image-track");
         if (ImSelector) {
