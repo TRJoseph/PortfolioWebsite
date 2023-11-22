@@ -8,11 +8,32 @@ class WorkSection extends Component {
   state = {
     work: [
       {
+        company: 'Clemson University',
+        timeWorked: 'Aug 2023 - Present',
+        location: 'Clemson, SC',
+        position: 'Academic Success Center Tutor',
+        description: `In my role as a tutor at Clemson University's Academic Success Center, 
+        I provided multifaceted support to students. My position involved tutoring subjects such as 
+        Electric Circuits 1 and Logic and Computing Devices. I am confident in my ability in these subjects 
+        and chose these classes to tutor as they are essential for new students in the department to fully grasp.
+        This position not only allowed me to reinforce my understanding of core concepts in electrical and computer engineering 
+        but also offered me the rewarding experience of assisting students encountering these subjects for the first time.`,
+        website: 'https://www.clemson.edu/asc/'
+      },
+      {
         company: 'RAAMP, Inc.',
         timeWorked: 'May 2023 - Present',
         location: 'Greenville, SC',
         position: 'Full-Stack Software Developer',
-        description: 'My responsibilities included...',
+        description: `During my time at RAAMP, I undertook a significant project focused 
+        on modernizing the payment processing system. This entailed a comprehensive overhaul 
+        from Stripe to Payrix, necessitating advanced skills in developing server endpoints 
+        to seamlessly integrate with Payrix's API and dashboard. This transition was pivotal 
+        in enhancing payment efficiency for both landlords and tenants using our application. The 
+        strategic shift to Payrix yielded substantial financial benefits, reducing transaction costs by 
+        97% and contributing to an impressive gross margin of 80%. The complexity of this project demanded a 
+        thorough rewriting of the existing codebase that previously interfaced with Stripe, showcasing 
+        my understanding of the technologies driving these interactions.`,
         website: 'https://raamp.com'
       },
       {

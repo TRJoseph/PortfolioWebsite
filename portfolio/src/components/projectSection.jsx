@@ -6,7 +6,7 @@ class projectSection extends Component {
     state = {
         projects: [
           {
-            project: 'Complete Prusa Mk3S 3D Printer Overhaul',
+            project: 'Complete Prusa Mk3S 3D Printer Wireless Overhaul',
             timePeriod: 'Sept-Oct 2022',
             description: '',
             link: '',

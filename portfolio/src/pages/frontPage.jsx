@@ -57,7 +57,9 @@ const FrontPage = () => {
           ImSelector.style.transform = 'translateZ(0)'; 
           ImSelector.style.willChange = 'transform'; 
           ImSelector.animate({
-            transform:`scale(1) translate(${prevPercentageRef.current}%,-50%)`},
+            transform:`scale(1) translate(${prevPercentageRef.current}%,-50%)`,
+          opacity: 1
+          },
             { duration: 300, fill: "forwards"
           });
         }

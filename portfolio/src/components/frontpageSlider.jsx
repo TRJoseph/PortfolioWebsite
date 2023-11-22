@@ -22,7 +22,8 @@ const ImageSlider = (props) => {
       if(toggleSection) {
         const newLeft = props.isCentralizedImageSlider ? "-33%" : (props.prevPercentageRef.current + "%");
         const newTop = props.isCentralizedImageSlider ? "30%" : "-50%";
-        const currentScale = props.isCentralizedImageSlider ? "0.25" : "1";
+        const currentScale = props.isCentralizedImageSlider ? "0.01" : "1";
+        const opacity = props.isCentralizedImageSlider ? 0 : 1;
   
         props.toggleCentralizeImageSlider();
         
@@ -31,7 +32,9 @@ const ImageSlider = (props) => {
           ImSelector.style.transform = 'translateZ(0)'; 
           ImSelector.style.willChange = 'transform'; 
           ImSelector.animate({
-            transform:`scale(${currentScale}) translate(${newLeft},${newTop})`},
+            transform:`scale(${currentScale}) translate(${newLeft},${newTop})`,
+            opacity: opacity
+          },
             { duration: 300, fill: "forwards"
           });
         }
